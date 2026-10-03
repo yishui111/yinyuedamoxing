@@ -1,0 +1,88 @@
+{
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0,
+    "time": "2026-10-04 01:54:14"
+  },
+  "results": [
+    {
+      "case": "T1.1",
+      "name": "首页加载",
+      "ok": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "case": "T1.2",
+      "name": "状态API",
+      "ok": true,
+      "detail": "gpu=NVIDIA GeForce RTX 4080 sr=16000"
+    },
+    {
+      "case": "T1.3",
+      "name": "页面内联样式与脚本",
+      "ok": true,
+      "detail": "style=True, script=True"
+    },
+    {
+      "case": "T2.1",
+      "name": "10s 管弦乐",
+      "ok": true,
+      "detail": "耗时 19.3s 峰值显存 3.15GB"
+    },
+    {
+      "case": "T2.2",
+      "name": "WAV 有效性",
+      "ok": true,
+      "detail": "16000Hz 10.0s peak=1.0 rms=0.1881"
+    },
+    {
+      "case": "T3.1",
+      "name": "10s 雨声雷鸣+反向提示词",
+      "ok": true,
+      "detail": "耗时 15.2s rms=0.0792"
+    },
+    {
+      "case": "T4.1",
+      "name": "20s 科幻音效",
+      "ok": true,
+      "detail": "实际 20.0s 耗时 13.3s"
+    },
+    {
+      "case": "T5.1",
+      "name": "同种子两次一致",
+      "ok": true,
+      "detail": "b8dc50e6bb91 vs b8dc50e6bb91 -> 一致"
+    },
+    {
+      "case": "T6.1",
+      "name": "最短 5s + 最少步数",
+      "ok": true,
+      "detail": "实际 5.0s"
+    },
+    {
+      "case": "T6.2",
+      "name": "越界钳制(时长20s/步数300)",
+      "ok": true,
+      "detail": "请求 999s/9999步 -> 20.0s/300步"
+    },
+    {
+      "case": "T6.3",
+      "name": "空提示词 400",
+      "ok": true,
+      "detail": "请输入音频描述文本"
+    },
+    {
+      "case": "T7.1",
+      "name": "卸载后显存归零",
+      "ok": true,
+      "detail": "allocated=0.01GB"
+    },
+    {
+      "case": "T7.2",
+      "name": "卸载后自动重载生成",
+      "ok": true,
+      "detail": "elapsed=11.6s"
+    }
+  ]
+}

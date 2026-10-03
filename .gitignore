@@ -1,0 +1,54 @@
+# =====================================================================
+# 本仓库只提交我自己写的封装层：REST 服务、启动/关闭/测试脚本、文档与小体积测试产物。
+# 三个上游引擎本体（Meta audiocraft / haoheliu audioldm2 / DiffRhythm）、
+# venv、hf_cache/pip_cache/wheels 缓存、模型权重与大体积测试产物一律不入库。
+# 换机部署：按 总览_README.md 把上游克隆回对应目录即可对上。
+# =====================================================================
+
+# ---- audiocraft（上游：https://github.com/facebookresearch/audiocraft）----
+/audiocraft/*
+!/audiocraft/_run_musicgen_tests.sh
+!/audiocraft/_start_server.bat
+!/audiocraft/musicgen_app.py
+!/audiocraft/static/
+!/audiocraft/templates/
+!/audiocraft/启动_musicgen.bat
+!/audiocraft/关闭_musicgen.bat
+!/audiocraft/测试结果/
+
+# ---- audioldm2（上游：https://github.com/haoheliu/audioldm2）----
+/audioldm2/*
+!/audioldm2/_run_suite.bat
+!/audioldm2/_start_server.bat
+!/audioldm2/audioldm2_app.py
+!/audioldm2/_diag2.py
+!/audioldm2/_hb.py
+!/audioldm2/batch.lst
+!/audioldm2/bg.png
+!/audioldm2/templates/
+!/audioldm2/启动_audioldm2.bat
+!/audioldm2/关闭_audioldm2.bat
+!/audioldm2/测试结果/
+
+# ---- DiffRhythm（上游：https://github.com/ASLP-lab/DiffRhythm）----
+/DiffRhythm/*
+!/DiffRhythm/diffrhythm_app.py
+!/DiffRhythm/启动_diffrhythm.bat
+!/DiffRhythm/关闭_diffrhythm.bat
+# DiffRhythm 测试产物 ~65M 且可再生，不入库
+
+# ---- 缓存 / 环境 / 产物 ----
+hf_cache/
+pip_cache/
+wheels/
+venv/
+.venv/
+__pycache__/
+*.pyc
+outputs/
+logs/
+*.log
+.workbuddy-ai/
+
+# 上游 .git 备份（保留上游历史但不入库）
+.git.上游备份/

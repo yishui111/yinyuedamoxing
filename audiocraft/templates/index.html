@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MusicGen · 文本生成音乐工作台</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="bg-orbs"><span></span><span></span><span></span></div>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+      </svg>
+    </div>
+    <div>
+      <h1>MusicGen 音乐生成工作台</h1>
+      <p class="sub">facebook/musicgen-medium · 文本描述 → 纯音乐 · 本地部署</p>
+    </div>
+  </div>
+  <div class="status" id="status">
+    <span class="dot" id="dot"></span>
+    <span id="statusText">连接中…</span>
+    <span class="vram" id="vram"></span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card prompt-card">
+    <label class="lab">🎵 音乐描述 <em>建议使用英文描述，效果最佳</em></label>
+    <textarea id="prompt" rows="3" placeholder="例：upbeat jazz with saxophone and piano, smooth and relaxing, 90 bpm">upbeat jazz with saxophone and piano, smooth and relaxing, 90 bpm</textarea>
+    <div class="chips" id="chips">
+      <button class="chip" data-p="upbeat jazz with saxophone and piano, smooth and relaxing, 90 bpm">🎷 爵士</button>
+      <button class="chip" data-p="epic orchestral cinematic music, strings and drums, dramatic and powerful">🎬 史诗管弦</button>
+      <button class="chip" data-p="lo-fi hip hop beat with rainy vinyl crackle, chill and cozy">☕ Lo-Fi</button>
+      <button class="chip" data-p="energetic electronic dance music, heavy bass and synth leads, 128 bpm">⚡ 电子舞曲</button>
+      <button class="chip" data-p="gentle piano solo, soft and melancholic, slow tempo">🎹 钢琴独奏</button>
+      <button class="chip" data-p="chinese traditional music with guzheng and bamboo flute, peaceful and elegant">🏮 国风</button>
+      <button class="chip" data-p="acoustic folk guitar, warm and cheerful, campfire vibe">🎸 民谣</button>
+      <button class="chip" data-p="8-bit retro game music, catchy and playful chiptune">🎮 8-bit</button>
+    </div>
+  </section>
+
+  <section class="card controls-card">
+    <div class="grid">
+      <div class="ctrl">
+        <label>时长 <b id="durationVal">10s</b></label>
+        <input type="range" id="duration" min="5" max="30" step="1" value="10">
+      </div>
+      <div class="ctrl">
+        <label>引导强度 (CFG) <b id="guidanceVal">3.0</b></label>
+        <input type="range" id="guidance" min="1" max="10" step="0.5" value="3">
+      </div>
+      <div class="ctrl">
+        <label>温度 <b id="temperatureVal">1.0</b></label>
+        <input type="range" id="temperature" min="0.1" max="2" step="0.1" value="1">
+      </div>
+      <div class="ctrl">
+        <label>Top-K <b id="topkVal">250</b></label>
+        <input type="range" id="topk" min="0" max="500" step="10" value="250">
+      </div>
+      <div class="ctrl seed">
+        <label>随机种子 <em>留空 = 随机</em></label>
+        <input type="number" id="seed" placeholder="随机">
+      </div>
+    </div>
+    <div class="actions">
+      <button id="genBtn" class="btn-primary">▶ 生成音乐</button>
+      <button id="unloadBtn" class="btn-ghost" title="从显存卸载模型">释放显存</button>
+    </div>
+    <div class="progress" id="progress" hidden>
+      <div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <span id="progressText">模型加载/生成中，请稍候…</span>
+    </div>
+    <div class="error" id="error" hidden></div>
+  </section>
+
+  <section class="card result-card" id="resultCard" hidden>
+    <h2>🎧 生成结果</h2>
+    <div class="result-meta" id="resultMeta"></div>
+    <audio id="player" controls></audio>
+    <a id="downloadBtn" class="btn-primary dl" download>⬇ 下载 WAV</a>
+  </section>
+
+  <section class="card history-card">
+    <h2>📜 生成历史 <small>（本次运行）</small></h2>
+    <ul id="history" class="history"><li class="empty">暂无记录</li></ul>
+  </section>
+
+  <footer>MusicGen (Meta audiocraft) · 本页面为配套 Web 工作台 · 模型仅本地推理</footer>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

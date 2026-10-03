@@ -1,0 +1,106 @@
+{
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0,
+    "time": "2026-10-01 04:44:56"
+  },
+  "results": [
+    {
+      "case": "T1.1",
+      "name": "首页加载",
+      "ok": true,
+      "detail": "HTTP 200, 包含标题: True"
+    },
+    {
+      "case": "T1.2",
+      "name": "状态API",
+      "ok": true,
+      "detail": "device=cuda, dtype=float16, gpu=NVIDIA GeForce RTX 4080"
+    },
+    {
+      "case": "T1.3",
+      "name": "静态资源 /static/style.css",
+      "ok": true,
+      "detail": "HTTP 200, 5627B"
+    },
+    {
+      "case": "T1.3",
+      "name": "静态资源 /static/app.js",
+      "ok": true,
+      "detail": "HTTP 200, 3948B"
+    },
+    {
+      "case": "T2.1",
+      "name": "15s 史诗管弦乐",
+      "ok": true,
+      "detail": "{\"duration\": 14.9, \"elapsed\": 239.7, \"file\": \"/outputs/music_20261001_041150_1815351667.wav\", \"ok\": true, \"peak_gb\": 4.6, \"prompt\": \"epic orchestral cinematic music, strings and drums, dramatic and powerful\", \"seed\": 1815351667, \"time\": \"2026-10-01 04:11:51\"}"
+    },
+    {
+      "case": "T2.2",
+      "name": "WAV 文件有效性",
+      "ok": true,
+      "detail": "32000Hz 14.94s ch=1 peak=0.917 rms=0.1498"
+    },
+    {
+      "case": "T3.1",
+      "name": "30s 电子舞曲(上限)",
+      "ok": true,
+      "detail": "请求30s 实际29.9s 生成耗时488.3s 峰值显存5.42GB"
+    },
+    {
+      "case": "T4.1",
+      "name": "同种子两次生成一致",
+      "ok": true,
+      "detail": "md5 401b71bf3a5a vs 401b71bf3a5a -> 一致"
+    },
+    {
+      "case": "T5.1",
+      "name": "最短时长 5s",
+      "ok": true,
+      "detail": "实际 4.9s"
+    },
+    {
+      "case": "T5.2",
+      "name": "超长时长钳制到 30s",
+      "ok": true,
+      "detail": "请求999s 实际 29.9s"
+    },
+    {
+      "case": "T5.3",
+      "name": "空提示词返回 400",
+      "ok": true,
+      "detail": "HTTP 400, 请输入音乐描述文本"
+    },
+    {
+      "case": "T5.4",
+      "name": "非法 JSON 返回 400",
+      "ok": true,
+      "detail": "HTTP 400"
+    },
+    {
+      "case": "T6.1",
+      "name": "中文提示词不报错且有输出",
+      "ok": true,
+      "detail": "ok=True rms=0.2867 (MusicGen 文本编码器为英文 T5, 中文效果需人工试听)"
+    },
+    {
+      "case": "T7.1",
+      "name": "卸载后显存归零",
+      "ok": true,
+      "detail": "allocated=0.01GB reserved=0.02GB"
+    },
+    {
+      "case": "T7.2",
+      "name": "状态显示未加载",
+      "ok": true,
+      "detail": "loaded=False"
+    },
+    {
+      "case": "T7.3",
+      "name": "卸载后可再次生成(自动重载)",
+      "ok": true,
+      "detail": "elapsed=93.2s peak=4.1GB"
+    }
+  ]
+}
